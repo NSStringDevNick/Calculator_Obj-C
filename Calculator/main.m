@@ -9,19 +9,29 @@
 #import "Calculator.h"
 
 int main(int argc, const char * argv[]) {
-    
+    double valueOne, valueTwo;
+    char operator;
     Calculator * calc = [[Calculator alloc ]init];
     
-    [calc setInputValue:123.0];
-    [calc add:200.];
-    [calc divide:15.];
-    [calc subsctract:20.];
-    [calc multiply:4.];
-    [calc memoryAdd:10];
-    [calc memoryRecall];
-    [calc memorySubtract:15];
+    NSLog(@"input value");
+    scanf("%lf %c %lf", &valueOne, &operator, &valueTwo);
     
-    NSLog(@"result = %g", [calc currentValue]);
+    [calc setInputValue:valueOne];
+    if(operator == '+')
+        [calc add:valueTwo];
+    else if(operator == '-')
+        [calc subsctract:valueTwo];
+    else if (operator == '*')
+        [calc multiply:valueTwo];
+    else if (operator == '/')
+        if(valueTwo == 0)
+            NSLog(@"divide on '0'");
+        else
+            [calc divide:valueTwo];
+    else
+        NSLog(@"unknown operator");
+    
+    NSLog(@"%.2f", [calc currentValue]);
     
     @autoreleasepool {
       

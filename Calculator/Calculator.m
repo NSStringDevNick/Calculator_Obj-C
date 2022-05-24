@@ -48,7 +48,12 @@
 }
 -(void) divide:(double)value{
     NSLog(@"method divide, current value = %g", inputValue);
-    inputValue /= value;
+    if(value != 0.0)
+        inputValue /=value;
+    else{
+        NSLog(@"divide on zero");
+        inputValue = NAN;
+    }
     NSLog(@"current value / %g = %g", value, inputValue);
 }
 
